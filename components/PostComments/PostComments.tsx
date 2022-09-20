@@ -1,6 +1,6 @@
 import {FC, useState} from 'react';
 import {Divider, Paper, Tab, Tabs, Typography} from "@material-ui/core";
-import {Comment} from "../Comment";
+import {Comment} from "../Comment/Comment";
 import {AddCommentForm} from "../AddCommentForm/AddCommentForm";
 import data from "../../Data"
 
