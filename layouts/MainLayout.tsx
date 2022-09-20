@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import clsx from 'clsx';
 import {LeftMenu} from '../components/LeftMenu';
-import {SideComments} from '../components/SideComments';
+import {SideComments} from '../components/SideComments/SideComments';
 import {Header} from "../components/Header";
 
 interface MainLayoutProps {
