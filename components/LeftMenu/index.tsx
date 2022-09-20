@@ -20,8 +20,8 @@ export const LeftMenu: React.FC = () => {
   return (
     <div className={styles.menu}>
       <ul>
-        {menu.map((obj) => (
-          <li key={obj.path}>
+        {menu.map((obj, i) => (
+          <li key={i}>
             <Button>
               {obj.icon}
               {obj.text}

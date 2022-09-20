@@ -1,8 +1,18 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
+import { theme } from '../theme';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import '../styles/globals.css';
+import 'macro-css';
+import {Header} from "../components/Header";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+       <Header />
+      <Component {...pageProps} />
+    </MuiThemeProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

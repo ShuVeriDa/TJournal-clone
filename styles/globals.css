@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: rgb(242, 242, 242);
+  font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 a {
@@ -12,15 +12,25 @@ a {
 }
 
 * {
+  -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
+  outline: none;
+  font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.content {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  padding: 0 30px;
+  padding-top: 80px;
+}
+
+.main-layout-white {
+  background-color: #fff;
+  height: 100vh;
 }
