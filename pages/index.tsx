@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import { Header } from '../components/Header';
-import { LeftMenu } from '../components/LeftMenu';
+import { Header } from '../components/Header/Header';
+import { LeftMenu } from '../components/LeftMenu/LeftMenu';
 import { Post } from '../components/Post/Comment';
 import { SideComments } from '../components/SideComments/SideComments';
 

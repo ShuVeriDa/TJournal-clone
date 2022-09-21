@@ -1,8 +1,8 @@
 import React, {ReactNode} from 'react';
 import clsx from 'clsx';
-import {LeftMenu} from '../components/LeftMenu';
+import {LeftMenu} from '../components/LeftMenu/LeftMenu';
 import {SideComments} from '../components/SideComments/SideComments';
-import {Header} from "../components/Header";
+import {Header} from "../components/Header/Header";
 
 interface MainLayoutProps {
    hideComments?: boolean;
