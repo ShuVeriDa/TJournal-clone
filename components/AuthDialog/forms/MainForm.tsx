@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Button} from "@material-ui/core";
-import styles from "../../AuthDialog/AuthDialog.module.scss";
+import styles from "../AuthDialog.module.scss";
 
 interface MainFormPropsType {
    onOpenLogin: (login: string) => void

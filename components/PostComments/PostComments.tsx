@@ -9,7 +9,7 @@ type CommentType = {
    id: number
    createdAt: string
    user: {
-      fullname: string
+      fullName: string
       avatarUrl: string
    }
 }

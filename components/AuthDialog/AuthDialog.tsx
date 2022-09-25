@@ -4,9 +4,9 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 
 import styles from './AuthDialog.module.scss'
-import {MainForm} from "../FollowButton/forms/MainForm";
-import {LoginForm} from "../FollowButton/forms/LoginForm";
-import {RegisterForm} from "../FollowButton/forms/RegisterForm";
+import {MainForm} from "./forms/MainForm";
+import {LoginForm} from "./forms/LoginForm";
+import {RegisterForm} from "./forms/RegisterForm";
 
 interface AuthDialogPropsType {
    authVisible: boolean
