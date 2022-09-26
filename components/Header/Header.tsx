@@ -60,7 +60,8 @@ export const Header: React.FC = () => {
             <IconButton>
                <NotificationIcon/>
             </IconButton>
-            {userData && <Link href={"/profile/1"}>
+            {userData
+               ? <Link href={"/profile/1"}>
                <a className="d-flex align-center">
                   <Avatar
                      className={styles.avatar}
@@ -69,11 +70,12 @@ export const Header: React.FC = () => {
                   />
                   <ArrowBottom/>
                </a>
-            </Link>}
-            <div className={styles.loginButton} onClick={openAuthDialog}>
+            </Link>
+               : <div className={styles.loginButton} onClick={openAuthDialog}>
                <UserIcon />
                Войти
             </div>
+            }
          </div>
          <AuthDialog closeAuthDialog={closeAuthDialog} authVisible={authVisible}/>
       </Paper>
