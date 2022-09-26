@@ -8,12 +8,16 @@ import {CreateUserDto, LoginDto} from "../../../utils/api/types";
 import {UserAPI} from "../../../utils/api/tjournal-api";
 import {setCookie} from "nookies";
 import {Alert} from "@material-ui/lab";
+import {useAppDispatch} from "../../../redux/hooks";
+import {setUserData} from "../../../redux/slices/userSlice";
+
 
 interface LoginFormPropsType {
    onOpenRegister: () => void
 }
 
 export const LoginForm: FC<LoginFormPropsType> = ({onOpenRegister}) => {
+   const dispatch = useAppDispatch()
    const [errorMessage, setErrorMessage] = useState('')
 
    const form = useForm({
@@ -24,12 +28,12 @@ export const LoginForm: FC<LoginFormPropsType> = ({onOpenRegister}) => {
    const onSubmit = async(dto: LoginDto) => {
       try {
          const data = await UserAPI.login(dto)
-         console.log(data)
          setCookie(null, "authToken", data.token, {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
          })
          setErrorMessage('')
+         dispatch(setUserData(data))
       } catch (err) {
          console.warn("Authorization error", err)
          if(err.response) {

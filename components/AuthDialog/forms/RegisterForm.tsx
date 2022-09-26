@@ -8,6 +8,8 @@ import {UserAPI} from "../../../utils/api/tjournal-api";
 import {CreateUserDto} from "../../../utils/api/types";
 import {setCookie} from "nookies";
 import {Alert} from "@material-ui/lab";
+import {setUserData} from "../../../redux/slices/userSlice";
+import {useAppDispatch} from "../../../redux/hooks";
 
 interface RegisterFormPropsType {
    onOpenRegister: () => void
@@ -15,6 +17,7 @@ interface RegisterFormPropsType {
 }
 
 export const RegisterForm: FC<RegisterFormPropsType> = ({onOpenRegister, onOpenLogin}) => {
+   const dispatch = useAppDispatch()
    const [errorMessage, setErrorMessage] = useState('')
    const form = useForm({
       mode: 'onChange',
@@ -30,6 +33,7 @@ export const RegisterForm: FC<RegisterFormPropsType> = ({onOpenRegister, onOpenL
             path: '/',
          })
          setErrorMessage('')
+         dispatch(setUserData(data))
       } catch (err) {
          console.warn("Authorization error", err)
          if (err.response) {
