@@ -1,14 +1,7 @@
 import Head from 'next/head';
-
-import { Header } from '../components/Header/Header';
-import { LeftMenu } from '../components/LeftMenu/LeftMenu';
-import { Post } from '../components/Post/Comment';
-import { SideComments } from '../components/SideComments/SideComments';
-import {GetServerSideProps} from "next";
-import {wrapper} from "../redux/store";
-import {parseCookies} from "nookies";
-import {UserAPI} from "../utils/api/tjournal-api";
-import {setUserData} from "../redux/slices/userSlice";
+import {LeftMenu} from '../components/LeftMenu/LeftMenu';
+import {Post} from '../components/Post/Post';
+import {SideComments} from '../components/SideComments/SideComments';
 
 export default function Home() {
   return (
@@ -42,20 +35,3 @@ export default function Home() {
     </div>
   );
 }
-
-export const getServerSideProps:GetServerSideProps = wrapper.getServerSideProps(
-   (store) => async(ctx) => {
-   try {
-      const {authToken} = parseCookies(ctx)
-
-      const userData = await UserAPI.getMe(authToken)
-
-      store.dispatch(setUserData(userData))
-      console.log(userData)
-
-      return {props: {}}
-   } catch (err) {
-      console.log(err)
-      return {props: {}}
-   }
-})

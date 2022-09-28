@@ -5,11 +5,12 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {LoginFormSchema} from '../../../utils/validations';
 import {FormField} from "../../FormField";
 import {CreateUserDto, LoginDto} from "../../../utils/api/types";
-import {UserAPI} from "../../../utils/api/tjournal-api";
+import {UserAPI} from "../../../utils/api/user-api";
 import {setCookie} from "nookies";
 import {Alert} from "@material-ui/lab";
 import {useAppDispatch} from "../../../redux/hooks";
 import {setUserData} from "../../../redux/slices/userSlice";
+import {Api} from "../../../utils/api";
 
 
 interface LoginFormPropsType {
@@ -27,8 +28,8 @@ export const LoginForm: FC<LoginFormPropsType> = ({onOpenRegister}) => {
 
    const onSubmit = async(dto: LoginDto) => {
       try {
-         const data = await UserAPI.login(dto)
-         setCookie(null, "authToken", data.token, {
+         const data = await Api().user.login(dto)
+         setCookie(null, "rtoken", data.token, {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
          })

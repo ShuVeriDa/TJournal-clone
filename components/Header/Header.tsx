@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Avatar, Button, IconButton, Paper} from '@material-ui/core';
 import {
    ExpandMoreOutlined as ArrowBottom,
@@ -27,6 +27,12 @@ export const Header: React.FC = () => {
    const closeAuthDialog = () => {
       setAuthVisible(false);
    };
+
+   useEffect(() => {
+      if (authVisible && userData) {
+         setAuthVisible(false)
+      }
+   }, [authVisible, userData])
 
    return (
       <Paper classes={{root: styles.root}} elevation={0}>
