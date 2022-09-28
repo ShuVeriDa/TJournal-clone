@@ -2,17 +2,18 @@ import {Post} from '../components/Post/Post';
 import {MainLayout} from "../layouts/MainLayout";
 import {Api} from "../utils/api";
 import {NextPage} from "next";
+import {PostType} from "../utils/api/types";
 
 interface HomePropsType {
-   posts: any[]
+   posts: PostType[]
 }
 
 const Home: NextPage<HomePropsType> = ({posts}) => {
    return (
       <MainLayout>
          {
-            posts.map(obj => {
-               return <Post key={obj} />
+            posts.map((obj, index) => {
+               return <Post key={obj.id} id={obj.id} title={obj.title}  description={obj.description}/>
             })
          }
       </MainLayout>
@@ -20,7 +21,7 @@ const Home: NextPage<HomePropsType> = ({posts}) => {
    );
 }
 
-export const getServerSideProps = async(ctx) => {
+export const getServerSideProps = async (ctx) => {
    try {
       const posts = await Api().post.getAll()
       return {
