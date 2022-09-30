@@ -16,7 +16,7 @@ export const Post: FC<PostPropsType> = ({id, title, imageUrl, description}) => {
    return (
       <Paper elevation={0} className="p-20" classes={{root: styles.paper}}>
          <Typography variant="h5" className={styles.title}>
-            <Link href={`/news${id}`}>
+            <Link href={`/news/${id}`}>
                <a href="#">
                   {title}
                </a>

@@ -4,17 +4,22 @@ import {FC, useEffect} from "react";
 
 interface EditorPropsType {
    onChange: (blocks: OutputData['blocks']) => void
+   initialBlocks: OutputData['blocks']
 }
 
-export const Editor: FC<EditorPropsType> = ({onChange}) => {
+export const Editor: FC<EditorPropsType> = ({onChange, initialBlocks}) => {
    useEffect(() => {
       const editor = new EditorJS({
          holder: 'editorjs',
+         data: {
+            blocks: initialBlocks
+         },
          placeholder: "Введите текст вашей статьи",
-          onChange: async() => {
+         onChange: async () => {
             const {blocks} = await editor.save()
             onChange(blocks)
-         }
+         },
+
       })
 
       return () => {

@@ -24,6 +24,7 @@ export type PostType = {
    tags: null | string
    id: number
    views: null
+   user: ResponseUser
    createdAt: string
    updatedAt: string
 

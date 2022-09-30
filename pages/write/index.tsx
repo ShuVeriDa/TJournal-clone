@@ -1,10 +1,9 @@
 import {NextPage} from "next";
-import {MainLayout} from "../layouts/MainLayout";
-import {WriteForm} from "../components/WriteForm/WriteForm";
+import {MainLayout} from "../../layouts/MainLayout";
+import {WriteForm} from "../../components/WriteForm/WriteForm";
 
-type WritePagePropsType = {
 
-}
+type WritePagePropsType = {}
 
 const WritePage: NextPage<WritePagePropsType> = () => {
    return (
