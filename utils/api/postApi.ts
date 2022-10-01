@@ -7,6 +7,10 @@ export const PostApi = (instance: AxiosInstance) => ({
       const {data} = await instance.get<PostType[]>('/posts', )
       return data;
    },
+   search: async (query: SearchPostDtoType) => {
+      const {data} = await instance.get<{items: PostType[], total: number}>('/posts/search', {params: query} )
+      return data;
+   },
    getOne: async (id: number) => {
       const {data} = await instance.get<PostType>(`/posts/${id}` )
       return data;
@@ -24,4 +28,13 @@ export const PostApi = (instance: AxiosInstance) => ({
 type CreatePostDtoType = {
    title: string
    body: OutputData['blocks']
+}
+
+export type SearchPostDtoType = {
+   title?: string;
+   body?: string;
+   views?: 'DESC' | 'ASC';
+   limit?: number;
+   take?: number;
+   tag?: string;
 }

@@ -5,9 +5,11 @@ import styles from './SideComments.module.scss';
 import data from "../../Data"
 import {CommentItem} from "../CommentItem/CommentItem";
 import clsx from "clsx";
+import {useComments} from "../../hooks/useComments";
 
 export const SideComments = () => {
    const [visible, setVisible] = useState<boolean>(true)
+  const {comments} = useComments()
 
    const toggleVisible = () => {
       setVisible(!visible)
@@ -18,7 +20,7 @@ export const SideComments = () => {
       <h3 onClick={toggleVisible}>
         Комментарии <ArrowRightIcon />
       </h3>
-      {visible && data.comments.popular.map((obj, i) => (
+      {visible && comments.map((obj, i) => (
         <CommentItem key={obj.id} {...obj} />
       ))}
     </div>

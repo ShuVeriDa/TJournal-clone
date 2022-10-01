@@ -1,4 +1,5 @@
 import {OutputData} from "@editorjs/editorjs";
+import {Post} from "@reduxjs/toolkit/src/query/tests/mocks/server";
 
 export type LoginDto = {
    email: string
@@ -14,6 +15,7 @@ export type ResponseUser = {
    email: string
    fullName: string
    token: string
+   commentsCount?: number
    createdAt: string
    updatedAt: string
 }
@@ -27,5 +29,13 @@ export type PostType = {
    user: ResponseUser
    createdAt: string
    updatedAt: string
+}
 
+export type CommentType = {
+   id: number
+   text: string
+   post: PostType
+   user: ResponseUser
+   createdAt: string
+   updatedAt: string
 }

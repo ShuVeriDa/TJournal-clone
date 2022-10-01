@@ -1,17 +1,13 @@
 import React from "react";
 import styles from "../SideComments/SideComments.module.scss";
 import Link from "next/link";
+import {PostType, ResponseUser} from "../../utils/api/types";
+import {Avatar} from "@material-ui/core";
 
 interface CommentItemPropsType {
-   user: {
-      id: number
-      fullName: string;
-   };
+   user: ResponseUser
    text: string;
-   post: {
-      id: number
-      title: string;
-   };
+   post: PostType
 }
 
 export const CommentItem: React.FC<CommentItemPropsType> = ({user, text, post}) => {
@@ -19,9 +15,7 @@ export const CommentItem: React.FC<CommentItemPropsType> = ({user, text, post}) 
    return (
       <div className={styles.commentItem}>
          <div className={styles.userInfo}>
-            <img alt="User avatar"
-               src="https://leonardo.osnova.io/598fc957-a3f6-598c-b6f9-a033c3941d12/-/scale_crop/64x64/-/format/webp/"
-            />
+            <Avatar style={{marginRight: '10px'}}>{user.fullName[0]}</Avatar>
             <Link href={`/profile/${user.id}`}>
                <a>
                   <b>{user.fullName}</b>
@@ -29,7 +23,7 @@ export const CommentItem: React.FC<CommentItemPropsType> = ({user, text, post}) 
             </Link>
          </div>
          <p className={styles.text}>{text}</p>
-         <Link href={`/news/${user.id}`}>
+         <Link href={`/news/${post.id}`}>
             <a>
                <span className={styles.postTitle}>{post.title}</span>
             </a>

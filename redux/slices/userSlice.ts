@@ -4,7 +4,7 @@ import {ResponseUser} from "../../utils/api/types";
 import {RootStateType} from "../store";
 
 export interface InitialStateType {
-   data: ResponseUser | null
+   data?: ResponseUser | null
 }
 
 const initialState: InitialStateType = {
@@ -30,6 +30,7 @@ export const userSlice = createSlice({
 })
 
 export const {setUserData} = userSlice.actions
+
 export const selectUserData = (state: RootStateType) => state.user.data
 
 export const userReducer = userSlice.reducer
